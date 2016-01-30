@@ -18,7 +18,7 @@ show "Time series as a table:"
 ktbl: ( [Time: key ts]; Price: value ts )
 
 // Append a column to the table
-donut_type: (count tbl) ? `Cake`Glazed`BostonCream`Gold
+donut_type: (count ts) ? `Cake`Glazed`BostonCream`Gold
 ktbl: update DonutType:donut_type from ktbl
 show ktbl
 show hline
@@ -27,7 +27,7 @@ show hline
 // Make a dictionary mapping names to lists, then flip it,
 // then use Time as a key column.
 ktbl2: flip `Time`Price`DonutType ! (key ts; value ts; donut_type)
-ktbl2: `Time xkey tbl2
+ktbl2: `Time xkey ktbl2
 show "Is ktbl2 the same as ktbl?"
 show ktbl ~ ktbl2
 show ktbl = ktbl2
