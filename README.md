@@ -1,22 +1,29 @@
 # q_practice
-When I can't remember how to do something simple in Q, I use these .q scripts as reminders.
-
-#### Note: this repo is under construction and will change rapidly
+Quick reference guide for some Q tasks
 
 ## See also: Q Tips
-This repo borrows many things from the book *Q Tips* by Nick Psaris.  
+This repo borrows things from the book *Q Tips* by Nick Psaris.  
 MIT-licensed source code is here: https://github.com/psaris/qtips
 
-## demo.q
-To run this script interactively:
+## Start with init.q
+If you're new to Q, then start here.  
 - go to whatever folder contains demo.q
 - start a q session
 - type this:
 ```
-\l demo.q
+\l init.q
 ```
 
-## normrand.q
-These convenience functions generate normally-distributed pseudorandom samples.  
+### system.q
+System commmands, navigation, file handles, current time.
+
+### functions.q
+Function syntax, projections, adverbs, dot expansion.
+
+### tables.q
+Practice manipulating dictionaries, tables, and keys.
+
+### normrand.q
+Generate normally-distributed pseudorandom samples.  
 The *bm* function is borrowed from https://github.com/psaris/qtips/blob/master/stat.q .
 
