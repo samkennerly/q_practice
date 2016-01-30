@@ -5,8 +5,8 @@ Quick reference guide for some Q tasks
 This repo borrows things from the book *Q Tips* by Nick Psaris.  
 MIT-licensed source code is here: https://github.com/psaris/qtips
 
-## Start with init.q
-If you're new to Q, then start here.  
+## init.q
+If you're new to Q, then start here: 
 - go to whatever folder contains demo.q
 - start a q session
 - type this:
