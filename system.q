@@ -24,12 +24,12 @@ key `
 key `.q
 show hline
 
-// stat.q stores its functions in the .stat directory. Change to that
-// directory and change back.
-\d .stat
+// Change to the .q directory, show all functions there, and change back.
+\d .q
+\f
 \d .
 
-// Show names of all tables, functions, and variables
+// Show names of all tables, functions, and variables in current directory
 show "All tables, functions, and variables"
 \a
 \f
