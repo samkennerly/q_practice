@@ -14,7 +14,7 @@ show hline
 // General-purpose round-to-nearest-x function: divide y by x,
 // convert to long int, then multiply by x.
 show "Rounding function"
-round: { x * "j"$ y % x }
+round: { y * "j"$ x % y }
 show round[123.456;10]
 show hline
 
