@@ -1,27 +1,30 @@
 // Make a character vector of 20 dashes. Convert it to a symbol.
+show "String of dashes"
 hline: 20#"-"
 show hline
 
 // Convert 'hline' from string to symbol.
+show "Symbol of dashes"
 hline: `$ hline
 show hline
 
 // Create another variable and delete it.
+show "Now you see it, now you don't."
 zz: 10
 delete zz from `.
 show hline
 
 // Define a list, then redefine it in-place to have mean 0.
 // Caution: this converts our integers to floats.
+show "10 coin flips:"
 coin: 0,1,2
 coin -: avg coin
-show "10 coin flips:"
 show 10 ? coin
 show hline
 
 // Make a list showing the combination on my luggage.
 // Also make a floating-point version.
-show "The combination on my luggage:"
+show "The combination on my luggage is"
 pin: 1 + til 5
 show pin
 fpin: "f"$ pin
@@ -36,13 +39,13 @@ show pin ~ fpin
 show hline
 
 // Use 0N! to show values for debugging.
-show "Debug statements:"
+show "Debug statements"
 5 + 0N! 10 * 2
 show hline
 
 // Make a list of strings. Count length of each string.
-show "Friends:"
-friend: ("Alice";"Bob")
+show "Friends"
+friend: ("Alice";"Bob";"Carol")
 show friend
 count each friend
 show hline
@@ -56,7 +59,7 @@ show hline
 
 // Crudely approximate a standard normal sample by adding
 // 12 samples uniform on [0,1] and subtracting 6.
-show "Random sample:"
+show "Random sample"
 show -6f + sum 12 ? 1f
 show hline
 
@@ -73,3 +76,4 @@ show hline
 // Format: if; then; elif; then; ... ; else
 show "Scalar conditional operator test"
 $[5 = 2+2; "I love Big Brother"; 1 = 0; "Up is down"; "NOPE"]
+show hline
