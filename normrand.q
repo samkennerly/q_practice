@@ -1,3 +1,4 @@
+// Define a namespace (also known as "directory" or "context").
 \d .normrand
 
 // Box-Muller transform from Q Tips.

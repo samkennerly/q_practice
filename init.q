@@ -1,9 +1,9 @@
-// Create a global variable and delete it
+// Create a global variable and delete it.
 zz: 10
 delete zz from `.
 
 // Define a list, then redefine it in-place to have mean 0.
-// (Note that this converts our integers to floats.)
+// Caution: this converts our integers to floats.
 coin: 0,1,2
 coin -: avg coin
 show coin
@@ -14,17 +14,18 @@ show hline
 
 // Make a list showing the combination on my luggage.
 // Show its type (should be "long") and make a floating-point version.
-// "Numerically equal" is not the same as "bitwise identical"
 pin: 1 + til 5
 show pin
 show type pin
 fpin: "f"$ 1 + til 5
 show fpin
+
+// "Numerically equal" is not the same as "bitwise identical".
 show pin = fpin
 show pin ~ fpin
 show hline
 
-// Use 0N! to show values for debugging
+// Use 0N! to show values for debugging.
 5 + 0N! 10 * 2
 show hline
 
@@ -39,17 +40,17 @@ show hline
 // Convert that list to a single string with spaces between words.
 // Convert that string to a symbol.
 show "What do you think about Q, computer?"
-show `$ " " sv string `I`hate`Q`so`much 
+show `$ " " sv string `I`hate`Q`so`much
 show hline
 
-// Crudely approximate a standard normal sample by
-// summing 12 samples uniform on [0,1] and subtracting 6
+// Crudely approximate a standard normal sample by adding
+// 12 samples uniform on [0,1] and subtracting 6.
 normal_sample: -6f + sum 12 ? 1f
 
-// Deal some cards by sampling without replacement
+// Deal some cards by sampling without replacement.
 ranks: "AKQJT98765432"
 suits: "hcds"
-cards: `$ ranks cross suits 
+cards: `$ ranks cross suits
 deal: { (neg x) ? cards }
 deal[5]
 show hline

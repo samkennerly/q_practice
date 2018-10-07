@@ -1,18 +1,17 @@
 hline: `$ 20#"-"
 
-// Change display size to 20 rows and 1000 characters wide
+// Change display size to 20 rows and 1000 characters wide.
 \c 20 128
 
-// Ask the OS to show us present working directory
+// Ask the OS to show present working directory.
 \pwd
-show hline
 
-// Give a command to the shell environment
+// Send a command to the shell.
 system "echo QHOME is $QHOME"
 show hline
 
-// Store a "handle" which points to file.
-// Test if that file exists (returns filename if true, empty list if false).
+// Store a "handle" which points to file. Test if that file exists.
+// Returns filename if true, empty list if false.
 show "Does testfolder/testfile.q exist?"
 h: `:testfolder/testfile.q
 key h
@@ -28,8 +27,9 @@ show hline
 \d .q
 \f
 \d .
+show hline
 
-// Show names of all tables, functions, and variables in current directory
+// Show names of all tables, functions, and variables in current directory.
 show "All tables, functions, and variables"
 \a
 \f
@@ -40,9 +40,9 @@ show hline
 flip enlist system "v"
 show hline
 
-// Get current time (in millisec).
-// Get current timestamp (local time)
-// Get current timestamp (GMT)
+// Get current time (millisec).
+// Get current timestamp (local time).
+// Get current timestamp (GMT).
 show "Right now in msec, local time, and GMT"
 .z.T
 .z.P
