@@ -1,29 +1,45 @@
 # q_practice
-Quick reference guide for some Q tasks
 
-## See also: Q Tips
-This repo borrows things from the book *Q Tips* by Nick Psaris.  
-MIT-licensed source code is here: https://github.com/psaris/qtips
+Quick reference for the
+[Q language](https://en.wikipedia.org/wiki/Q_(programming_language_from_Kx_Systems)).  
+See the
+[kx reference card](https://code.kx.com/q/ref/card/)
+for a more comprehensive reference.  
+See the
+[Q Tips](https://github.com/psaris/qtips)
+book by Nick Psaris for a thorough tutorial.
 
-## init.q
-If you're new to Q, then start here: 
-- go to whatever folder contains demo.q
-- start a q session
-- type this:
-```
-\l init.q
-```
+## quickstart
 
-### system.q
+1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/) to any folder on your machine.
+2. Open a terminal and `cd` to wherever you cloned this repository.
+3. Start Q and enter `\l init.q` to run the [init.q](init.q) script.
+
+## scripts
+
+[init.q](init.q)  
+Comments, lists, symbols, functions, `show`, `delete`, `each`, `0N!`, `?`. 
+
+[functions.q](functions.q)  
+Functions,
+[lambdas](https://en.wikipedia.org/wiki/Anonymous_function),
+[adverbs](https://code.kx.com/q/ref/adverbs/),
+[projections](https://code.kx.com/q/ref/syntax/#projection),
+[dot apply](https://code.kx.com/wiki/Reference/DotSymbol),
+`over`, `scan`.
+
+[normrand.q](normrand.q)  
+Pseudorandom normal samples with a
+[Box-Muller transform](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform)
+from
+[qtips/stat.q](https://github.com/psaris/qtips/blob/master/stat.q).
+
+[system.q](system.q)  
 System commmands, navigation, file handles, current time.
 
-### functions.q
-Function syntax, projections, adverbs, dot expansion.
-
-### tables.q
-Practice manipulating dictionaries, tables, and keys.
-
-### normrand.q
-Generate normally-distributed pseudorandom samples.  
-The *bm* function is borrowed from https://github.com/psaris/qtips/blob/master/stat.q .
-
+[tables.q](tables.q)  
+Example
+[dictionaries](http://code.kx.com/q4m3/5_Dictionaries/),
+[tables](http://code.kx.com/q4m3/8_Tables/),
+and
+[keys](http://code.kx.com/q4m3/8_Tables/#84-primary-keys-and-keyed-tables).
