@@ -1,56 +1,52 @@
-hline: `$20#"-"
-show hline
+// Send a command to the shell.
+system "echo QHOME is $QHOME"
+
+// Define a file handle. Write a list of strings to that file.
+// Note: key returns empty list if file does not exist.
+spampath: `:test/output/spam.txt
+spampath 0: 23 # enlist "spam"
+"Saved some spam to ", string key spampath
 
 // Change display size to 20 rows and 1000 characters wide.
 \c 20 128
 
 // Ask the OS to show present working directory.
+"You are here:"
 \pwd
 
-// Send a command to the shell.
-system "echo QHOME is $QHOME"
-show hline
-
-// Store a "handle" which points to file. Test if that file exists.
-// Returns filename if true, empty list if false.
-show "Does testfolder/testfile.q exist?"
-h: `:testfolder/testfile.q
-key h
-show hline
-
-// Show all existing namespaces. List contents of .q namespace.
-show "Namespaces"
-key `
-show "Contents of .q namespace"
-key `.q
-show hline
-
-// Change to the .q directory, show all functions there, and change back.
-show "Functions in the .q directory"
-\d .q
+// Explore current directory
+"Namespaces:"
+`
+"Functions: "
 \f
-\d .
-show hline
-
-// Show names of all tables, functions, and variables in current directory.
-show "Tables"
+"Tables: "
 \a
-show "Functions"
-\f
-show "Variables"
+"Variables: "
 \v
-show hline
-
-// Display all variable names as a column
-show "Column of variables"
+"Variables as a column:"
 flip enlist system "v"
-show hline
+
+
+// Explore other directories
+"Visit the .q directory"
+\d .q
+"What's in the .q directory?"
+\f
+"Return to root"
+\d .
+"Explore .q without leaving home"
+key `.q
 
 // Get current time (millisec).
 // Get current timestamp (local time).
 // Get current timestamp (GMT).
-show "Right now in msec, local time, and GMT"
-.z.T
-.z.P
+
+// What time is it?
+"GMT is"
 .z.p
-show hline
+"GMT in old datetime format"
+.z.t
+"Local time is"
+.z.P
+"Local time in old datetime format"
+.z.T
