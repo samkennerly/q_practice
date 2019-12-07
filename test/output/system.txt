@@ -1,0 +1,35 @@
+Welcome to kdb+ 32bit edition
+For support please see http://groups.google.com/d/forum/personal-kdbplus
+Tutorials can be found at http://code.kx.com/wiki/Tutorials
+To exit, type \\
+To remove this startup msg, edit q.q
+`--------------------
+,"/Users/negative/code/q_practice"
+,"QHOME is /Users/negative/q"
+`--------------------
+"Does testfolder/testfile.q exist?"
+()
+`--------------------
+"Namespaces"
+`q`Q`h`j`o
+"Contents of .q namespace"
+``neg`not`null`string`reciprocal`floor`ceiling`signum`mod`xbar`xlog`and`or`each`scan`over`prior`mmu`lsq`inv`md5`ltime`gtime`c..
+`--------------------
+"Functions in the .q directory"
+`aj`aj0`all`and`any`asc`asof`attr`avgs`ceiling`cols`count`cross`cut`deltas`desc`differ`distinct`dsave`each`ej`ema`eval`except..
+`--------------------
+"Tables"
+`symbol$()
+"Functions"
+`symbol$()
+"Variables"
+`h`hline
+`--------------------
+"Column of variables"
+(,`h;,`hline)
+`--------------------
+"Right now in msec, local time, and GMT"
+10:59:23.076
+2019.12.07D10:59:23.076259000
+2019.12.07D15:59:23.076293000
+`--------------------

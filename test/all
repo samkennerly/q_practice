@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# Run all scripts.
+
+QARCH='m32'
+QHOME="$HOME/q"
+SCRIPTS="init functions system tables"
+
+q="$QHOME/$QARCH/q"
+for x in $SCRIPTS; do
+  script="src/$x.q"
+  outpath="test/output/$x.txt"
+  echo "$script > $outpath"
+  $q $script < /dev/null > $outpath
+done
