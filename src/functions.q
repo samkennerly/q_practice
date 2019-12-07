@@ -1,68 +1,59 @@
-hline: `$20#"-"
-show hline
+// Custom print function: show, but with newlines.
+print: {-1 .Q.s x;}
+show "Hello, World!"
+print "Hello, World!"
 
-// Define a test function.
-show "3 + 2 * 5"
-testfun: { [a;b] c:b+2*a; c }
-testfun[5;3]
-show hline
+// Define a function several different ways.
+"Pythagorean party:"
+pythagoras: { sqrt (x*x)+(y*y) }
+"The long side is: ", string pythagoras[3; 4]
+pythagoras: { [a; b] sqrt (a*a)+(b*b) }
+"The long side is: ", string pythagoras[3; 4]
+pythagoras: { [a; b] cc: (a*a)+(b*b); sqrt cc }
+"The long side is: ", string pythagoras[3; 4]
 
-// Use a lambda to show perfect squares 1^2 thru 10^2.
-show "First 10 squares"
-show {x*x} 1 + til 10
-show hline
+// Map a lambda to a list
+"Perfect squares:"
+{x*x} til 17
 
-// General-purpose round-to-nearest-x function: divide y by x,
-// convert to long int, then multiply by x.
-show "Round to nearest 10"
-round: { y * "j"$ x % y }
-show round[123.456;10]
-show hline
+// Make a convex combination of two numbers.
+mix: { (z*y)+(1-z)*x }
+"Mostly 1, with a little 10 mixed in"
+mix[1; 10; 0.1]
 
-// 'mix' makes a convex combination of two numbers.
-// 'half_mix' is 'mix' with 0.5 pre-loaded as 3rd input.
-show "Convex combinations"
-mix: { (z*y) + (1-z)*x }
-half_mix: mix[;;0.5]
-mix[1;2;0.9]
-half_mix[1;2]
-show hline
+// Project a function (pre-apply some inputs)
+midpoint: mix[ ; ; 0.5]
+"Halfway between 10 and 20."
+midpoint[10; 20]
 
-// Use a projection of mix[] to make a moving average.
-show "Exponential moving average of 1,2,3,4,5"
+// Use projects to make moving averages.
 ewma: { mix[;;x] scan y }
-ewma[0.9; 1 + til 5]
-show hline
+ewma92: ewma[0.92; ]
+"Exponential moving average of the combination on my luggage"
+ewma92 1 + til 5
 
 // Check time and space used by evaluating a function.
-show "Time and space test"
+"Time (ms) and space (bytes)"
 \ts ewma (1+ til 1000000)
-show hline
 
 // Apply a 2-input function to consecutive elements in a list.
-pin: 1 + til 5
-show "{x+y} scan 1,2,3,4,5"
-{x+y} scan pin
-{x+y}\ [pin]
-show "{x+y} over 1,2,3,4,5"
-{x+y} over pin
-{x+y}/ [pin]
-show hline
+"{x+y} scan the combination on my luggage."
+{x+y} scan 1,2,3,4,5
+"{x+y} over the combination on my luggage."
+{x+y} over 1,2,3,4,5
 
 // One of many ways to calculate factorials.
-show "10!"
 bang: { */ [1 + reverse til x] }
+"10! is"
 bang[10]
-show hline
 
-// Use /* or *\ to repeat some operation over a list.
-show "100 times the combination on my luggage"
-{100*x} each pin
-100 */: pin
-pin *\: 100
-show hline
+// Repeat an operation over a list.
+luggage: 1 + til 5
+"100 times the combination on my luggage"
+100 */: luggage
+"100 times the combination on my luggage"
+luggage *\: 100
 
 // Dot Apply: Expand a list to be used as arguments to a function.
-show "Dot apply example"
+"1 + 2 * 3"
 {x+y*z} . 1,2,3
-show hline
