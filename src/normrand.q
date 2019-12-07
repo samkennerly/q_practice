@@ -1,24 +1,30 @@
-// Define a namespace (also known as "directory" or "context").
+// Define a namespace (a.k.a. directory, context).
 \d .normrand
 
-// Box-Muller transform from Q Tips.
-// Input must have an even number of elements.
-bm:{
-    if[count[x] mod 2;'`length];
-	x:2 0N#x;
-	r:sqrt -2f*log first x;
-	theta:2f*acos[-1f]*last x;
-	x: r*cos theta;
-	x,:r*sin theta;
- 	x }
+pi: acos -1
 
-// Generate normally-distributed pseudorandom numbers.
-// N: number of samples
-// mu: mean of samples
-// sigma: standard deviation of samples
-samples:{ [N;mu;sigma]
-    is_odd: mod[N; 2];
-    if[ is_odd; N+:1 ];
-    randos: bm N ? 1f;
-    if[ is_odd; randos: -1_randos ];
-    mu + sigma * randos }
+// Convert (N ? 1f) -> N standard normal random samples.
+// Raise error if input has an odd number of elements.
+boxmuller: { [x]
+  x: "f" $ x;
+  n: count[x];
+  half: n div 2;
+  if[n mod 2; '`length];
+  rad: sqrt -2f * log half # x;
+  ang: (2 * pi) * neg[half] # x;
+  (rad * cos ang), (rad * sin ang)
+  }
+
+// Generate n samples from normal distribution with mean mu and stdev sigma.
+samples: { [n; mu; sigma]
+  mu + sigma * n # boxmuller $[n mod 2; n + 1; n] ? 1f
+  }
+
+test: { [ ]
+  vals: samples[10000; -10; 3];
+  mu: avg vals; sigma: sqrt var vals;
+  if [abs[10 + mu] > 0.1; show raze "Mean is ", string mu, " (should be -10)"];
+  if [abs[-3 + sigma] > 0.1; show raze "Stdev is ", string sigma, " (should be 3)"];
+  }
+
+test[]
