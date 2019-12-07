@@ -20,11 +20,10 @@ samples: { [n; mu; sigma]
   mu + sigma * n # boxmuller $[n mod 2; n + 1; n] ? 1f
   }
 
-test: { [ ]
-  vals: samples[10000; -10; 3];
-  mu: avg vals; sigma: sqrt var vals;
-  if [abs[10 + mu] > 0.1; show raze "Mean is ", string mu, " (should be -10)"];
-  if [abs[-3 + sigma] > 0.1; show raze "Stdev is ", string sigma, " (should be 3)"];
-  }
-
-test[]
+n: 10000
+mu: -10
+sigma: 3
+raze "Generate ",string[n]," samples with mu ",string[mu]," and sigma ",string[sigma]
+vals: samples[n; mu; sigma]
+raze "Mean: ", string avg vals
+raze "Stdev: ", string sqrt var vals
