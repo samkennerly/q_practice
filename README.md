@@ -101,3 +101,13 @@ q src/init.q > test/output/init.txt
   - Kx [reference card](https://code.kx.com/q/ref/card/)
   - Kx [list of repos](https://code.kx.com/v2/github/)
   - [Q Tips](https://github.com/psaris/qtips)
+
+### WTF are all these cryptic `type` values?
+
+I never remember them, so I made a [table of datatypes].
+
+[table of datatypes]: https://samkennerly.github.io/tldrs/q_types.html
+
+
+
+
