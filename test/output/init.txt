@@ -1,46 +1,35 @@
-Welcome to kdb+ 32bit edition
-For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/wiki/Tutorials
-To exit, type \\
+kdb+ 32bit edition. To exit, type \\
 To remove this startup msg, edit q.q
-"String of dashes"
-"--------------------"
-"Symbol of dashes"
-`--------------------
-"Now you see it, now you don't."
-`.
-`--------------------
-"10 coin flips:"
--1 -1 1 0 1 0 1 1 0 -1f
-`--------------------
-"The combination on my luggage is"
-1 2 3 4 5
-1 2 3 4 5f
-`--------------------
-"Which list elements are equal?"
-11111b
-"Are the lists identical?"
-0b
-`--------------------
+
 "Debug statements"
 20
 25
+"What a dashing string!"
+"--------------------"
+"What a dashing symbol!"
 `--------------------
-"Friends"
-"Alice"
-"Bob"
-"Carol"
+"`hline, are you there?"
+`.
+0b
+"10 coin flips:"
+-1 -1 1 0 1 0 1 1 0 -1i
+"The combination on my luggage is"
+1 2 3 4 5
+"As floating-point numbers, the combination is:"
+1 2 3 4 5f
+"Are all list elements equal?"
+1b
+"Are the lists identical?"
+0b
+"I'll be there for yooooou"
+("Alice";"Bob";"Carol")
+"How long are their names?"
 5 3 5
-`--------------------
 "How do you feel about Q, computer?"
 `I have no feelings.
-`--------------------
-"Random sample"
+"Sample of not-quite-uniform random float"
 0.0631877
-`--------------------
 "Wrong again, Albert."
 `5s`Ah`2c`3d`4c
-`--------------------
 "Scalar conditional operator test"
 "NOPE"
-`--------------------

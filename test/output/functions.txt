@@ -1,43 +1,32 @@
-Welcome to kdb+ 32bit edition
-For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/wiki/Tutorials
-To exit, type \\
+kdb+ 32bit edition. To exit, type \\
 To remove this startup msg, edit q.q
-`--------------------
-"3 + 2 * 5"
-13
-`--------------------
-"First 10 squares"
-1 4 9 16 25 36 49 64 81 100
-`--------------------
-"Round to nearest 10"
-120
-`--------------------
-"Convex combinations"
+
+"Hello, World!"
+"Hello, World!"
+
+"Pythagorean party:"
+"The long side is: 5"
+"The long side is: 5"
+"The long side is: 5"
+"Perfect squares:"
+0 1 4 9 16 25 36 49 64 81 100 121 144 169 196 225 256
+"Mostly 1, with a little 10 mixed in"
 1.9
-1.5
-`--------------------
-"Exponential moving average of 1,2,3,4,5"
-(1;1.9;2.89;3.889;4.8889)
-`--------------------
-"Time and space test"
-15 16777472
-`--------------------
-"{x+y} scan 1,2,3,4,5"
+"Halfway between 10 and 20."
+15f
+"Exponential moving average of the combination on my luggage"
+(1;1.92;2.9136;3.913088;4.913047)
+"Time (ms) and space (bytes)"
+13 16777472
+"{x+y} scan the combination on my luggage."
 1 3 6 10 15
-1 3 6 10 15
-"{x+y} over 1,2,3,4,5"
+"{x+y} over the combination on my luggage."
 15
-15
-`--------------------
-"10!"
+"10! is"
 3628800
-`--------------------
 "100 times the combination on my luggage"
 100 200 300 400 500
+"100 times the combination on my luggage"
 100 200 300 400 500
-100 200 300 400 500
-`--------------------
-"Dot apply example"
+"1 + 2 * 3"
 7
-`--------------------

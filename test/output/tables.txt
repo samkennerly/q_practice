@@ -1,105 +1,133 @@
-Welcome to kdb+ 32bit edition
-For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/wiki/Tutorials
-To exit, type \\
+kdb+ 32bit edition. To exit, type \\
 To remove this startup msg, edit q.q
-"Dictionary of prices"
+
+"Here is a dictionary:"
+00:00| 0.3927524
+01:00| 0.5170911
+02:00| 0.5159796
+03:00| 0.4066642
+04:00| 0.1780839
+05:00| 0.3017723
+06:00| 0.785033
+07:00| 0.5347096
+"I have altered the dict."
 00:00| 0.3927524
 01:00| 0
 02:00| 0.5159796
 03:00| 0.4066642
 04:00| 0.1780839
 05:00| 0.3017723
-`
-"Table of bids"
-Time | Price    
------| ---------
-00:00| 0.3927524
-01:00| 0        
-02:00| 0.5159796
-03:00| 0.4066642
-04:00| 0.1780839
-05:00| 0.3017723
-`
-"Table of donut bids"
-Time | Price     Donut      
+06:00| 0.785033
+07:00| 0.5347096
+"Here is a table:"
+time | price     donut      
 -----| ---------------------
 00:00| 0.3927524 BostonCream
-01:00| 0         Golden     
-02:00| 0.5159796 BostonCream
-03:00| 0.4066642 Glazed     
-04:00| 0.1780839 Cake       
-05:00| 0.3017723 Golden     
-`
-"Another table of donut bids"
-Time | Price     Donut      
------| ---------------------
-00:00| 0.3927524 BostonCream
-01:00| 0         Golden     
-02:00| 0.5159796 BostonCream
-03:00| 0.4066642 Glazed     
-04:00| 0.1780839 Cake       
-05:00| 0.3017723 Golden     
-`
-"Which rows of tables are equal?"
-Time | Price Donut
------| -----------
-00:00| 1     1    
-01:00| 1     1    
-02:00| 1     1    
-03:00| 1     1    
-04:00| 1     1    
-05:00| 1     1    
-"Are tables identical?"
-1b
-`
-"Un-keyed table"
-Time  Price     Donut      
+01:00| 0         Glazed     
+02:00| 0.5159796 Cake       
+03:00| 0.4066642 Golden     
+04:00| 0.1780839 Glazed     
+05:00| 0.3017723 BostonCream
+06:00| 0.785033  BostonCream
+07:00| 0.5347096 Glazed     
+"Here is the same table without keys:"
+time  price     donut      
 ---------------------------
 00:00 0.3927524 BostonCream
-01:00 0         Golden     
-02:00 0.5159796 BostonCream
-03:00 0.4066642 Glazed     
-04:00 0.1780839 Cake       
-05:00 0.3017723 Golden     
-`
-"New column order"
-Donut       Price     Time 
+01:00 0         Glazed     
+02:00 0.5159796 Cake       
+03:00 0.4066642 Golden     
+04:00 0.1780839 Glazed     
+05:00 0.3017723 BostonCream
+06:00 0.785033  BostonCream
+07:00 0.5347096 Glazed     
+"Here is (hopefully) the same table:"
+time  price     donut      
 ---------------------------
-BostonCream 0.3927524 00:00
-Golden      0         01:00
-BostonCream 0.5159796 02:00
-Glazed      0.4066642 03:00
-Cake        0.1780839 04:00
-Golden      0.3017723 05:00
-`
-"Is it topologically a donut?"
-Donut       Price     Time  Genus
----------------------------------
-BostonCream 0.3927524 00:00 0    
-Golden      0         01:00 1    
-BostonCream 0.5159796 02:00 0    
-Glazed      0.4066642 03:00 1    
-Cake        0.1780839 04:00 1    
-Golden      0.3017723 05:00 1    
-`
-"How big and old are the donuts?"
-Donut       Price     Time  Genus Kg        Age  
--------------------------------------------------
-BostonCream 0.3927524 00:00 0     0.3173358 03:41
-Golden      0         01:00 1     0.4836199 11:34
-BostonCream 0.5159796 02:00 0     0.1153192 05:44
-Glazed      0.4066642 03:00 1     0.4749875 05:14
-Cake        0.1780839 04:00 1     0.2195405 09:40
-Golden      0.3017723 05:00 1     0.2879526 00:45
-`
-"Selected columns"
-Price     Age  
----------------
-0.3927524 03:41
-0         11:34
-0.5159796 05:44
-0.4066642 05:14
-0.1780839 09:40
-0.3017723 00:45
-`
+00:00 0.3927524 BostonCream
+01:00 0         Glazed     
+02:00 0.5159796 Cake       
+03:00 0.4066642 Golden     
+04:00 0.1780839 Glazed     
+05:00 0.3017723 BostonCream
+06:00 0.785033  BostonCream
+07:00 0.5347096 Glazed     
+"Are the tables equal?"
+time | 1
+price| 1
+donut| 1
+"Are the tables identical?"
+1b
+"This new table has donuts *and* topology."
+age   donut       genus mass       price     time 
+--------------------------------------------------
+05:44 BostonCream 0     0.4240783  0.3927524 00:00
+05:14 Glazed      1     0.194528   0         01:00
+09:40 Cake        1     0.1957715  0.5159796 02:00
+00:45 Golden      1     0.04061773 0.4066642 03:00
+01:04 Glazed      1     0.4683752  0.1780839 04:00
+02:57 BostonCream 0     0.1391061  0.3017723 05:00
+03:58 BostonCream 0     0.1196171  0.785033  06:00
+06:01 Glazed      1     0.07540665 0.5347096 07:00
+"Get a column"
+`BostonCream`Glazed`Cake`Golden`Glazed`BostonCream`BostonCream`Glazed
+"Get more columns"
+donut       mass      
+----------------------
+BostonCream 0.4240783 
+Glazed      0.194528  
+Cake        0.1957715 
+Golden      0.04061773
+Glazed      0.4683752 
+BostonCream 0.1391061 
+BostonCream 0.1196171 
+Glazed      0.07540665
+"Use q-sql select to generate a column"
+x donut       holemass   
+-------------------------
+0 BostonCream 0          
+1 Glazed      0.0389056  
+2 Cake        0.0391543  
+3 Golden      0.008123546
+4 Glazed      0.09367503 
+5 BostonCream 0          
+6 BostonCream 0          
+7 Glazed      0.01508133 
+"Pretend to be SQL some more"
+x donut       price    
+-----------------------
+0 BostonCream 0.3927524
+5 BostonCream 0.3017723
+6 BostonCream 0.785033 
+c    | t f a
+-----| -----
+age  | u    
+donut| s    
+genus| b    
+mass | f    
+price| f    
+time | u    
+"Save test/output/tbl.csv"
+`:test/output/tbl.csv
+"Read test/output/tbl.csv"
+age   donut       genus mass       price     time 
+--------------------------------------------------
+05:44 BostonCream 0     0.4240783  0.3927524 00:00
+05:14 Glazed      1     0.194528   0         01:00
+09:40 Cake        1     0.1957715  0.5159796 02:00
+00:45 Golden      1     0.04061773 0.4066642 03:00
+01:04 Glazed      1     0.4683752  0.1780839 04:00
+02:57 BostonCream 0     0.1391061  0.3017723 05:00
+03:58 BostonCream 0     0.1196171  0.785033  06:00
+06:01 Glazed      1     0.07540665 0.5347096 07:00
+"Do they match?"
+age donut genus mass price time
+-------------------------------
+1   1     1     0    0     1   
+1   1     1     0    1     1   
+1   1     1     0    0     1   
+1   1     1     0    0     1   
+1   1     1     0    0     1   
+1   1     1     0    0     1   
+1   1     1     0    0     1   
+1   1     1     0    0     1   

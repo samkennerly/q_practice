@@ -1,0 +1,6 @@
+kdb+ 32bit edition. To exit, type \\
+To remove this startup msg, edit q.q
+
+"Generate 10000 samples with mu -10 and sigma 3"
+"Mean: -10.00831"
+"Stdev: 2.95083"
