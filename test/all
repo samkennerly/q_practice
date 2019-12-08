@@ -3,7 +3,7 @@
 
 QARCH='m32'
 QHOME="$HOME/q"
-SCRIPTS="init functions system tables"
+SCRIPTS="init functions normrand system tables"
 
 q="$QHOME/$QARCH/q"
 for x in $SCRIPTS; do
