@@ -1,70 +1,69 @@
-// Make a dictionary mapping times (HH:MM format) to floats.
-// Overwrite a specific value in that dictionary.
-// Append more items. Caution: No protection against duplicate keys.
-show "Dictionary of prices"
-t: 01:00 * til 3
-x: 3 ? 1f
+OUTPUT: "test/output/"
+
+// Create a {minute: float} dictionary.
+t: 01:00 * til 8
+x: count[t] ? 1f
 ts: t ! x
-ts[01:00]: 0f
-ts: ts, (03:00 + 01:00 * til 3) ! 3 ? 1f
+"Here is a dictionary:"
 show ts
-show `
 
-// Make a keyed table from a dictionaroy.
-show "Table of bids"
-bids: ( [Time: key ts]; Price: value ts )
-show bids
-show `
+// Update a dict. No protection against duplicate keys!
+ts[01:00]: 0f
+"I have altered the dict."
+show ts
 
-// Append a column to a table.
-show "Table of donut bids"
+// Create a keyed table from the dictionary. Append a new column.
+bids: ( [time: key ts]; price: value ts )
 donut: (count ts) ? `Cake`Glazed`BostonCream`Golden
-donutbids: update Donut:donut from bids
-show donutbids
-show `
+bids: update donut:donut from bids
+"Here is a table:"
+show bids
 
-// Make the same table in a different way:
-// Make a dictionary mapping names to lists,
-// flip it, and use Time as a key column.
-show "Another table of donut bids"
-donutbids1: flip `Time`Price`Donut ! (key ts; value ts; donut)
-donutbids1: `Time xkey donutbids1
-show donutbids1
-show `
+// Drop keys from a table
+bids: 0! bids
+"Here is the same table without keys:"
+show bids
 
-// Compare tables.
-show "Which rows of tables are equal?"
-show donutbids = donutbids1
-show "Are tables identical?"
-show donutbids ~ donutbids1
-show `
+// Create an unkeyed table by flipping a dict of lists.
+"Here is (hopefully) the same table:"
+bids1: flip `time`price`donut ! (key ts; value ts; donut)
+show bids1
+"Are the tables equal?"
+show min bids = bids1
+"Are the tables identical?"
+show bids ~ bids1
 
-// Drop keys from a table.
-show "Un-keyed table"
-tbl: 0! donutbids
+// Append more columns. Sort columns.
+nrows: count[bids]
+tbl: update genus: donut <> `BostonCream from bids
+tbl: tbl ^ ([] mass: nrows ? 0.5f; age: nrows ? 12:00)
+tbl: (asc cols tbl) xcols tbl
+"This new table has donuts *and* topology."
 show tbl
-show `
 
-// Change column order.
-show "New column order"
-tbl: `Donut`Price`Time xcols tbl
-show tbl
-show `
+// Run some queries
+"Get a column"
+show tbl[`donut]
+"Get more columns"
+show `donut`mass # tbl
+"Use q-sql select to generate a column"
+show select i, donut, holemass: 0.2 * genus * mass from tbl
+"Pretend to be SQL some more"
+show select i, donut, price from tbl where (price > 0) & (genus = 0)
 
-// Append a new column derived from the old columns.
-show "Is it topologically a donut?"
-tbl: update Genus: Donut <> `BostonCream from tbl
-show tbl
-show `
+// Show metadata
+show meta tbl
 
-// Horizontal-concatenate 2 tables.
-show "How big and old are the donuts?"
-N: count tbl
-bigtbl: tbl ^ ([] Kg: N ? 0.5f; Age: N ? 12:00)
-show bigtbl
-show `
+// Save table to CSV format
+path: `$ OUTPUT, "tbl.csv"
+raze "Save ", string path
+save path
 
-// Extract 2 columns.
-show "Selected columns"
-show `Price`Age # bigtbl
-show `
+// Read CSV and compare.
+types: upper (0! meta tbl)[`t]
+delims: enlist ","
+raze "Read ", string path
+tbl1: (types; delims) 0: path
+show tbl1
+"Do they match?"
+show tbl = tbl1
