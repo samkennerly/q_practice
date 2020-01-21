@@ -1,8 +1,11 @@
 # q_practice
 
-Q can be difficult.
+Join the continuum.
 
-![mariachi band](q.jpeg)
+<img
+  alt="Mariachi band"
+  src="https://raw.githubusercontent.com/samkennerly/posters/master/q_practice.jpeg"
+  title="Time may be eternal, Captain, but our patience is not.">
 
 ## abstract
 
